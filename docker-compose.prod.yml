@@ -1,0 +1,81 @@
+services:
+  # Strapi CMS Backend
+  strapi:
+    container_name: ${STRAPI_CONTAINER_NAME:-strapi}
+    build:
+      context: ./strapi
+      dockerfile: docker/production/Dockerfile
+    image: ${STRAPI_IMAGE:-portfolio-strapi:latest}
+    restart: unless-stopped
+    env_file: ./strapi/.env.prod
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/app/package.json
+      - ./strapi/package-lock.json:/opt/app/package-lock.json
+      - ./strapi/.env.prod:/opt/app/.env
+      - strapi-uploads:/opt/app/public/uploads
+    networks:
+      - app-network
+    ports:
+      - "${STRAPI_HOST_PORT:-1337}:${STRAPI_PORT:-1337}"
+    depends_on:
+      strapiDB:
+        condition: service_healthy
+
+  # PostgreSQL Database
+  strapiDB:
+    container_name: ${DATABASE_CONTAINER_NAME:-strapiDB}
+    platform: ${DATABASE_PLATFORM:-linux/amd64}
+    restart: unless-stopped
+    image: ${DATABASE_IMAGE:-postgres:16.0-alpine}
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Next.js Frontend
+  frontend:
+    container_name: ${FRONTEND_CONTAINER_NAME:-frontend}
+    build:
+      context: ./frontend
+      dockerfile: docker/production/Dockerfile
+      # BuildKit cannot attach a build container to a custom compose network.
+      # The Makefile creates a dedicated buildx builder wired to the
+      # portfolio-prod network so the static export can reach Strapi by
+      # container name (http://strapi:1337/api).
+      args:
+        STRAPI_API_URL: ${STRAPI_API_URL:-http://strapi:1337/api}
+        NEXT_PUBLIC_STRAPI_URL: ${NEXT_PUBLIC_STRAPI_URL}
+        SITE_URL: ${SITE_URL}
+    image: ${FRONTEND_IMAGE:-portfolio-frontend:latest}
+    restart: unless-stopped
+    env_file: ./frontend/.env.prod
+    ports:
+      - "${FRONTEND_HOST_PORT:-3000}:${FRONTEND_PORT:-3000}"
+    networks:
+      - app-network
+    depends_on:
+      strapi:
+        condition: service_started
+
+volumes:
+  strapi-data:
+    name: ${DATABASE_VOLUME_NAME:-portfolio-prod-strapi-data}
+  strapi-uploads:
+
+networks:
+  app-network:
+    name: ${NETWORK_NAME:-portfolio-prod}
+    driver: ${NETWORK_DRIVER:-bridge}

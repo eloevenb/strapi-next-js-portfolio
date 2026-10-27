@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_text_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "icon": "message"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  },
+  "config": {}
+}

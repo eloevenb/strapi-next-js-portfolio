@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_navigation_table_of_contents",
+  "info": {
+    "displayName": "Table of Contents",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "component": "navigation.table-of-content-item",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

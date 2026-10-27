@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publications",
+  "info": {
+    "singularName": "publication",
+    "pluralName": "publications",
+    "displayName": "Publication"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "publications"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "publications"
+    },
+    "page": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "min": 1,
+      "max": 64
+    },
+    "content": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "text.paragraph",
+        "layout.vertical-spacing",
+        "image.image",
+        "text.code-snippet"
+      ],
+      "required": true
+    },
+    "tableOfContents": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "navigation.table-of-contents",
+      "repeatable": false
+    }
+  }
+}

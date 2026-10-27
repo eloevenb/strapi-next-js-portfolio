@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_navigation_table_of_content_items",
+  "info": {
+    "displayName": "Table of content item",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "anchor": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "level": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_layout_vertical_spacings",
+  "info": {
+    "displayName": "Vertical Spacing",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "Size": {
+      "type": "integer"
+    },
+    "anchor": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

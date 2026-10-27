@@ -1,0 +1,48 @@
+{
+  "kind": "singleType",
+  "collectionName": "app_bars",
+  "info": {
+    "singularName": "app-bar",
+    "pluralName": "app-bars",
+    "displayName": "App bar",
+    "description": "Pages shown in the app bar. The order of the links is the menu order."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.app-bar-link",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

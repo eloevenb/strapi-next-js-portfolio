@@ -1,0 +1,26 @@
+# Environment files (keep real secrets out of images)
+.env
+.env.*
+!.env*.example
+
+# Dependencies
+node_modules
+
+# Build output
+# `dist` and `.next` are produced inside the image. A host copy would be sent
+# as build context and then thrown away.
+dist
+build
+.next
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# IDE
+.idea
+.vscode
+
+# Misc
+.DS_Store

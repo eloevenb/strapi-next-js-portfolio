@@ -1,0 +1,89 @@
+services:
+  # Strapi CMS Backend
+  strapi:
+    container_name: ${STRAPI_CONTAINER_NAME:-strapi-dev}
+    build:
+      context: ./strapi
+      dockerfile: docker/development/Dockerfile
+    image: ${STRAPI_IMAGE:-strapi:dev}
+    restart: unless-stopped
+    env_file:
+      - ./strapi/.env.dev
+    # HOST_WORKSPACE_FOLDER is the path on the Docker host. The devcontainer
+    # talks to that daemon, so bind mounts cannot use the in-container /workspace path.
+    volumes:
+      - ${HOST_WORKSPACE_FOLDER:-.}/strapi/config:/opt/app/config
+      - ${HOST_WORKSPACE_FOLDER:-.}/strapi/src:/opt/app/src
+      - ${HOST_WORKSPACE_FOLDER:-.}/strapi/package.json:/opt/package.json
+      - ${HOST_WORKSPACE_FOLDER:-.}/strapi/package-lock.json:/opt/package-lock.json
+      - ${HOST_WORKSPACE_FOLDER:-.}/strapi/.env.dev:/opt/app/.env
+      - ${HOST_WORKSPACE_FOLDER:-.}/strapi/public/uploads:/opt/app/public/uploads
+    ports:
+      - "${STRAPI_HOST_PORT:-1337}:${STRAPI_PORT:-1337}"
+    networks:
+      - app-network
+    depends_on:
+      strapiDB:
+        condition: service_healthy
+
+  # PostgreSQL Database
+  strapiDB:
+    container_name: ${DATABASE_CONTAINER_NAME:-strapiDB-dev}
+    platform: ${DATABASE_PLATFORM:-linux/amd64}
+    restart: unless-stopped
+    image: ${DATABASE_IMAGE:-postgres:16.0-alpine}
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME:-portfolio_user}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-portfolio_password}
+      POSTGRES_DB: ${DATABASE_NAME:-portfolio_dev}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/
+    ports:
+      - "${DATABASE_HOST_PORT:-5432}:${DATABASE_PORT:-5432}"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME:-portfolio_user} -d ${DATABASE_NAME:-portfolio_dev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Next.js frontend
+  frontend:
+    container_name: ${FRONTEND_CONTAINER_NAME:-frontend-dev}
+    build:
+      context: ./frontend
+      dockerfile: docker/development/Dockerfile
+    image: ${FRONTEND_IMAGE:-frontend:dev}
+    restart: unless-stopped
+    env_file:
+      - ./frontend/.env.dev
+    environment:
+      # The optimizer runs inside this container, where localhost is not Strapi.
+      NEXT_PUBLIC_STRAPI_IMAGE_URL: http://strapi:1337
+    volumes:
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/app:/app/app:z
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/src:/app/src:z
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/public:/app/public:z
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/package.json:/app/package.json:z
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/next.config.ts:/app/next.config.ts:z
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/tsconfig.json:/app/tsconfig.json:z
+      - ${HOST_WORKSPACE_FOLDER:-.}/frontend/proxy.ts:/app/proxy.ts:z
+    ports:
+      - "${FRONTEND_HOST_PORT:-3000}:${FRONTEND_PORT:-3000}"
+    networks:
+      - app-network
+    depends_on:
+      - strapi
+    security_opt:
+      - ${FRONTEND_SECURITY_OPT:-seccomp:unconfined}
+
+volumes:
+  strapi-data:
+    name: ${DATABASE_VOLUME_NAME:-portfolio-dev-strapi-data}
+
+networks:
+  # Shared with the devcontainer. `make start-dev` creates it if needed.
+  app-network:
+    name: ${NETWORK_NAME:-portfolio-dev}
+    external: true

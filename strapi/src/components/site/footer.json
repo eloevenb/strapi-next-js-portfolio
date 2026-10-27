@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_site_footers",
+  "info": {
+    "displayName": "Footer",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "pages": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "privacy": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "terms": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "copyright": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  },
+  "config": {}
+}

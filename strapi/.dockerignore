@@ -1,0 +1,10 @@
+node_modules/
+.tmp/
+.cache/
+.git/
+build/
+
+# Environment files (keep real secrets out of images)
+.env
+.env.*
+!.env*.example

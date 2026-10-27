@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_page_projects",
+  "info": {
+    "displayName": "Projects",
+    "icon": "apps",
+    "description": "Project cards and the category filter. Empty states, filter labels, and card captions are edited under Site → Interface."
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "intro": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  },
+  "config": {}
+}

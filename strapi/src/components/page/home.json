@@ -1,0 +1,76 @@
+{
+  "collectionName": "components_page_homes",
+  "info": {
+    "displayName": "Home",
+    "icon": "house",
+    "description": "Home page hero. The two buttons open other pages. Social links come from Social."
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "intro": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "viewProjects": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "projectsPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page"
+    },
+    "contact": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "contactPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page"
+    },
+    "findMe": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  },
+  "config": {}
+}

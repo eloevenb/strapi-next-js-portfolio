@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_navigation_app_bar_links",
+  "info": {
+    "displayName": "App bar link",
+    "icon": "link",
+    "description": "A page shown in the app bar. Repeat the component in the order the links should appear."
+  },
+  "options": {},
+  "attributes": {
+    "page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_text_code_snippets",
+  "info": {
+    "displayName": "Code snippet",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "language": {
+      "type": "enumeration",
+      "required": true,
+      "default": "other",
+      "enum": [
+        "javascript",
+        "typescript",
+        "python",
+        "bash",
+        "C",
+        "Cpp",
+        "Rust",
+        "yaml",
+        "json",
+        "other"
+      ]
+    }
+  },
+  "config": {}
+}

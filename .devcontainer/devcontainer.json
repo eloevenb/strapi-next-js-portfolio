@@ -1,0 +1,22 @@
+{
+    "name": "portfolio devcontainer",
+    // Editor only. Strapi, Postgres, and the frontend are started from
+    // docker-compose.dev.yml so `make rebuild-dev` can recreate them without
+    // a Dev Container rebuild. Opening this folder still brings that stack up.
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "node",
+    "initializeCommand": "docker network inspect portfolio-dev >/dev/null 2>&1 || docker network create portfolio-dev && docker compose --env-file .env.dev -f docker-compose.dev.yml up -d",
+    "remoteEnv": {
+        "HOST_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": []
+        }
+    }
+}

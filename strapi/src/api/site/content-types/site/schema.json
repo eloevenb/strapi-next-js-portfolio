@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "sites",
+  "info": {
+    "singularName": "site",
+    "pluralName": "sites",
+    "displayName": "Site",
+    "description": "Site-wide identity, footer, and interface copy. Page bodies live in the Page collection."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "identity": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.identity",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.footer",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "interface": {
+      "type": "component",
+      "repeatable": false,
+      "component": "site.interface",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

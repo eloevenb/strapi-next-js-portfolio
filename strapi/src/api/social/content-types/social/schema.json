@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "socials",
+  "info": {
+    "singularName": "social",
+    "pluralName": "socials",
+    "displayName": "Social"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Linkedin": {
+      "type": "string",
+      "regex": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$"
+    },
+    "GitHub": {
+      "type": "string",
+      "regex": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$"
+    },
+    "HackTheBox": {
+      "type": "string",
+      "regex": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$"
+    },
+    "Email": {
+      "type": "string",
+      "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+    },
+    "name": {
+      "type": "string",
+      "default": "Socials",
+      "required": true
+    }
+  }
+}

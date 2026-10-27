@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": "A non-publication page such as the home page, contact page, projects page, or 404 page. Exactly one page is the home page, and its public URL is the locale root."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "isHome": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "content": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "text.paragraph",
+        "page.home",
+        "page.contact",
+        "page.projects",
+        "layout.vertical-spacing",
+        "image.image",
+        "text.code-snippet"
+      ],
+      "required": true
+    }
+  }
+}

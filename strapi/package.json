@@ -1,0 +1,42 @@
+{
+  "name": "portfolio-strapi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portfolio Strapi backend",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "5.27.0",
+    "@strapi/plugin-users-permissions": "5.27.0",
+    "@strapi/strapi": "5.27.0",
+    "better-sqlite3": "11.3.0",
+    "pg": "^8.16.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "fc209f49-5f71-4610-b600-883bff65ca8b",
+    "installId": "bd0d5de3225d1af42e30d7673f2b480de1b745a1ae17ca7be53fc1d601b1ff2d"
+  }
+}

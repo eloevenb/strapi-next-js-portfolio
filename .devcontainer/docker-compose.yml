@@ -1,0 +1,37 @@
+# Editor container only. App services stay in docker-compose.dev.yml so they can
+# be rebuilt without recreating this container. Both projects share the
+# portfolio-dev network, which `make start-dev` creates.
+services:
+  devcontainer:
+    container_name: portfolio-devcontainer
+    image: node:24-bookworm
+    user: root
+    working_dir: /workspace
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        mkdir -p /workspace/strapi/public/uploads
+        chown -R node:node /workspace/strapi/node_modules /workspace/frontend/node_modules /workspace/strapi/public/uploads
+        exec "$@"
+      - --
+    command: sleep infinity
+    volumes:
+      # This file lives in .devcontainer/, so the repo root is the parent.
+      - ..:/workspace:cached
+      # Keep the volume names created by the previous combined Compose project.
+      - strapi-node-modules:/workspace/strapi/node_modules
+      - frontend-node-modules:/workspace/frontend/node_modules
+    networks:
+      - app-network
+
+volumes:
+  strapi-node-modules:
+    name: portfolio_strapi-node-modules
+  frontend-node-modules:
+    name: portfolio_frontend-node-modules
+
+networks:
+  app-network:
+    name: portfolio-dev
+    external: true

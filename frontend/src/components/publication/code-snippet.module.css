@@ -1,0 +1,174 @@
+/* GitHub theme colors. Dark overrides follow the app color-scheme attribute. */
+.root :global(.hljs-doctag),
+.root :global(.hljs-keyword),
+.root :global(.hljs-meta) :global(.hljs-keyword),
+.root :global(.hljs-template-tag),
+.root :global(.hljs-template-variable),
+.root :global(.hljs-type),
+.root :global(.hljs-variable.language_) {
+  color: #ce3140;
+}
+
+.root :global(.hljs-title),
+.root :global(.hljs-title.class_),
+.root :global(.hljs-title.class_.inherited__),
+.root :global(.hljs-title.function_) {
+  color: #6f42c1;
+}
+
+.root :global(.hljs-attr),
+.root :global(.hljs-attribute),
+.root :global(.hljs-literal),
+.root :global(.hljs-meta),
+.root :global(.hljs-number),
+.root :global(.hljs-operator),
+.root :global(.hljs-variable),
+.root :global(.hljs-selector-attr),
+.root :global(.hljs-selector-class),
+.root :global(.hljs-selector-id) {
+  color: #005cc5;
+}
+
+.root :global(.hljs-regexp),
+.root :global(.hljs-string),
+.root :global(.hljs-meta) :global(.hljs-string) {
+  color: #032f62;
+}
+
+.root :global(.hljs-built_in),
+.root :global(.hljs-symbol) {
+  color: #c54400;
+}
+
+.root :global(.hljs-comment),
+.root :global(.hljs-code),
+.root :global(.hljs-formula) {
+  color: #67707a;
+}
+
+.root :global(.hljs-name),
+.root :global(.hljs-quote),
+.root :global(.hljs-selector-tag),
+.root :global(.hljs-selector-pseudo) {
+  color: #1c8034;
+}
+
+.root :global(.hljs-subst) {
+  color: #24292e;
+}
+
+.root :global(.hljs-section) {
+  color: #005cc5;
+  font-weight: bold;
+}
+
+.root :global(.hljs-bullet) {
+  color: #735c0f;
+}
+
+.root :global(.hljs-emphasis) {
+  color: #24292e;
+  font-style: italic;
+}
+
+.root :global(.hljs-strong) {
+  color: #24292e;
+  font-weight: bold;
+}
+
+.root :global(.hljs-addition) {
+  color: #1c8034;
+  background-color: #f0fff4;
+}
+
+.root :global(.hljs-deletion) {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-doctag),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-keyword),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-meta) :global(.hljs-keyword),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-template-tag),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-template-variable),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-type),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-variable.language_) {
+  color: #ff7b72;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-title),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-title.class_),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-title.class_.inherited__),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-title.function_) {
+  color: #d2a8ff;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-attr),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-attribute),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-literal),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-meta),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-number),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-operator),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-variable),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-selector-attr),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-selector-class),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-selector-id) {
+  color: #79c0ff;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-regexp),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-string),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-meta) :global(.hljs-string) {
+  color: #a5d6ff;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-built_in),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-symbol) {
+  color: #ffa657;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-comment),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-code),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-formula) {
+  color: #8b949e;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-name),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-quote),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-selector-tag),
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-selector-pseudo) {
+  color: #7ee787;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-subst) {
+  color: #c9d1d9;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-section) {
+  color: #3787ff;
+  font-weight: bold;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-bullet) {
+  color: #f2cc60;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-emphasis) {
+  color: #c9d1d9;
+  font-style: italic;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-strong) {
+  color: #c9d1d9;
+  font-weight: bold;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-addition) {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+
+:global([data-mui-color-scheme="dark"]) .root :global(.hljs-deletion) {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
